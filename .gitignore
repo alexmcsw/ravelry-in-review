@@ -50,5 +50,6 @@ rsconnect/
 
 
 # data
- *.json
- *.csv
+*.json
+*.csv
+*.jpg
