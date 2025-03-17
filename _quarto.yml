@@ -11,3 +11,5 @@ format:
     theme: 
         light: minty
         dark: cyborg
+execute:
+  freeze: auto
