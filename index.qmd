@@ -105,7 +105,7 @@ list(
 
 ```{r}
 
-most_favourited <- df |> filter(favorites_count == max(favorites_count)) |> head(1)
+most_favourited <- df |> mutate(favorites_count = as.numeric(favorites_count)) |> filter(favorites_count == max(favorites_count)) |> head(1)
 
 
 images <- list.files(
