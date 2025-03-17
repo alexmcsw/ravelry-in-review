@@ -1,0 +1,161 @@
+--- 
+title: "Ravelry in Review"
+author: "Alex McSween"
+format: 
+  dashboard:
+    logo: images/logo.png
+    nav-buttons: 
+     - icon: github
+       href: https://github.com/alexmcsw/ravelry-in-review
+     - icon: activity
+       href: https://www.ravelry.com/people/amcsw
+    theme: 
+        light: minty
+        dark: cyborg
+---
+
+```{r}
+library(jsonlite)
+library(purrr)
+library(dplyr)
+library(ggplot2)
+library(ggimage)
+library(gt)
+
+path <- "./data/json/projects/"
+files <- dir(path, pattern = "*.json")
+
+df <- data.frame()
+
+for (file in files) {
+
+  temp <- paste0(path,file) %>%
+    fromJSON() %>%
+    unlist() %>%
+    as.matrix() %>%
+    t() %>%
+    as.data.frame()
+
+  df <- dplyr::bind_rows(df, temp)
+}
+
+```
+
+```{r}
+
+open_projects <- df |> filter(status_name == "In progress") |> count() |> as.numeric()
+
+completed_projects <- df |> filter(status_name == "Finished") |> count() |> as.numeric()
+
+gift_projects <- df |> filter(!(made_for %in% c("me", "Me", "me!", "ME", "", NA))) |> count() |> as.numeric()
+
+me_projects <- df |> filter((made_for %in% c("me", "Me", "me!", "ME", "", NA))) |> count() |> as.numeric()
+
+meterage <- df |> select(contains("packs.total_meters")) |> mutate(across(everything(), as.numeric)) |> sum(na.rm = TRUE)
+
+```
+## Row {height="20%"}
+
+```{r}
+#| content: valuebox
+#| title: "Completed Projects"
+
+list(
+  icon = "check-all",
+  color = "secondary",
+  value = completed_projects
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Active WIPs"
+
+list(
+  icon = "cone-striped",
+  color = "#ffce67",
+  value = open_projects
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Meters knitted"
+
+list(
+  icon = "rulers",
+  color = "light",
+  value = meterage
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Gift percentage"
+
+list(
+  icon = "gift",
+  color = "pink",
+  value = round((gift_projects / me_projects)*100)
+)
+```
+
+## Row {height=70%}
+### Column {width=40%}
+
+```{r}
+
+most_favourited <- df |> filter(favorites_count == max(favorites_count)) |> head(1)
+
+
+images <- list.files(
+    path = "data/photos/project",
+    pattern = paste0(most_favourited |> select(permalink), "-\\d.jpg"),
+    full.names = TRUE
+)
+```
+
+```{r}
+#| title: Most favourited project
+#| padding: 0px
+#| expandable: false
+
+
+plot <- ggplot() + geom_image(aes(x = 1,  y= 1, image = sample(images, 1)), size = 0.7) + theme_void()
+
+table <- most_favourited |> 
+    select(name, favorites_count, links.self.href, comments_count) |>
+    gt() |>
+    fmt_url(
+    columns = links.self.href,
+    label = "Ravelry",
+    show_underline = FALSE
+  ) |>
+    cols_add(heart = "Heart", comment = "comment") |>
+    fmt_icon(heart, fill_color = "red", stroke_color = "red") |>
+    fmt_icon(comment, fill_color = "blue", stroke_color = "blue") |>
+    cols_merge(
+        columns = c(name, links.self.href),
+        pattern = "{1} ({2})"
+    )  |>
+    cols_merge(
+        columns = c(favorites_count, heart, comments_count, comment),
+        pattern = "{2} {1} {4} {3}"
+    ) |>
+    cols_width(name ~ pct(75), favorites_count ~ pct(25)) |>
+    cols_label(name = "Project", favorites_count = "") |>
+    opt_stylize(color = "pink") |>
+    tab_options(table.width = pct(90))
+  
+
+
+plot
+
+table
+  
+```
+
+### Column {width=60%}
+```{r}
+print("hi")
+```
