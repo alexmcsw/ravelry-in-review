@@ -11,5 +11,7 @@ format:
     theme: 
         light: minty
         dark: cyborg
+project:
+  output-dir: docs
 execute:
   freeze: auto
