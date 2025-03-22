@@ -157,5 +157,56 @@ table
 
 ### Column {width=60%}
 ```{r}
-print("hi")
+
+#define clothing categoryies
+accessory <- "bag|purse|clutch|pouch"
+cardigan <- "cardi"
+hats <- "hat|toque|beanie|hood|balaclava|hue"
+mitts <- "mitten|gloves"
+scarf <- "scarf|shawl|collar"
+shirt <- "tee|tank|polo|cami|top|shirt|blouse|bralette"
+socks <- "socks|slippers|boots"
+sweater <- "sweater|jumper|pullover"
+vest <- "vest|slipover"
+
+df |> mutate(
+  category = case_when(
+    grepl(accessory, tolower(pattern_name)) ~ "Accessories",
+    grepl(cardigan, tolower(pattern_name)) ~ "Cardigans",
+    grepl(hats, tolower(pattern_name)) ~ "Hats",
+    grepl(mitts, tolower(pattern_name)) ~ "Mittens",
+    grepl(scarf, tolower(pattern_name)) ~ "Scarves",
+    grepl(shirt, tolower(pattern_name)) ~ "Tops",
+    grepl(socks, tolower(pattern_name)) ~ "Socks",
+    grepl(sweater, tolower(pattern_name)) ~ "Sweaters",
+    grepl(vest, tolower(pattern_name)) ~ "Vests",
+    .default = "Other"
+  ),
+  category = case_when(
+    category == "Other" & grepl(accessory, tolower(name)) ~ "Accessories",
+    category == "Other" & grepl(cardigan, tolower(name)) ~ "Cardigans",
+    category == "Other" & grepl(hats, tolower(name)) ~ "Hats",
+    category == "Other" & grepl(mitts, tolower(name)) ~ "Mittens",
+    category == "Other" & grepl(scarf, tolower(name)) ~ "Scarves",
+    category == "Other" & grepl(shirt, tolower(name)) ~ "Tops",
+    category == "Other" & grepl(socks, tolower(name)) ~ "Socks",
+    category == "Other" & grepl(sweater, tolower(name)) ~ "Sweaters",
+    category == "Other" & grepl(vest, tolower(name)) ~ "Vests",
+    .default = category
+),
+# a bit of manual entry here
+# lesson is to be more specific in my rav projects!!
+category = case_when(
+  grepl("tulip|delphinus|vair|cloudbow", tolower(name)) ~ "Sweaters",
+  grepl("sulina|kostner|silvatica|snaraness|gossamer", tolower(name)) ~ "Scarves",
+  grepl("springfrost|coaticook|reverie", tolower(name)) ~ "Socks",
+  grepl("willapund", tolower(name)) ~ "Vests",
+  grepl("llelua", tolower(name)) ~ "Hats",
+  grepl("cyanotype", tolower(name)) ~ "Mittens",
+  .default = category
+)
+) |>
+ggplot() +
+geom_bar(aes(category))
+
 ```
