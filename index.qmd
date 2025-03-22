@@ -39,6 +39,23 @@ for (file in files) {
   df <- dplyr::bind_rows(df, temp)
 }
 
+palette <- c(
+  "#007bff",
+  "#6610f2",
+  "#6f42c1",
+  "#e83e8c",
+  "#ff7851",
+  "#fd7e14",
+  "#ffce67",
+  "#56cc9d",
+  "#20c997",
+  "#6cc3d5",
+  "#78c2ad",
+  "#f3969a"
+)
+
+
+
 ```
 
 ```{r}
@@ -145,7 +162,10 @@ table <- most_favourited |>
     cols_width(name ~ pct(75), favorites_count ~ pct(25)) |>
     cols_label(name = "Project", favorites_count = "") |>
     opt_stylize(color = "pink") |>
-    tab_options(table.width = pct(90))
+    tab_options(
+      table.width = pct(90),
+      container.overflow.y = FALSE
+    )
   
 
 
@@ -157,6 +177,9 @@ table
 
 ### Column {width=60%}
 ```{r}
+#| title: Knitting categories
+#| padding: 4px
+#| expandable: false
 
 #define clothing categoryies
 accessory <- "bag|purse|clutch|pouch"
@@ -171,7 +194,7 @@ vest <- "vest|slipover"
 
 df |> mutate(
   category = case_when(
-    grepl(accessory, tolower(pattern_name)) ~ "Accessories",
+    grepl(accessory, tolower(pattern_name)) ~ "Bags",
     grepl(cardigan, tolower(pattern_name)) ~ "Cardigans",
     grepl(hats, tolower(pattern_name)) ~ "Hats",
     grepl(mitts, tolower(pattern_name)) ~ "Mittens",
@@ -183,7 +206,7 @@ df |> mutate(
     .default = "Other"
   ),
   category = case_when(
-    category == "Other" & grepl(accessory, tolower(name)) ~ "Accessories",
+    category == "Other" & grepl(accessory, tolower(name)) ~ "Bags",
     category == "Other" & grepl(cardigan, tolower(name)) ~ "Cardigans",
     category == "Other" & grepl(hats, tolower(name)) ~ "Hats",
     category == "Other" & grepl(mitts, tolower(name)) ~ "Mittens",
@@ -206,7 +229,37 @@ category = case_when(
   .default = category
 )
 ) |>
-ggplot() +
-geom_bar(aes(category))
+group_by(category) |>
+summarize(count = n()) |>
+ggplot(aes(x = category, y = count, colour = category)) +
+geom_segment(aes(x = category, xend = category, y = 0, yend = count - 1.5, alpha = 0.8), linewidth = 2) +
+geom_point(size = 15, aes(alpha = 0.9)) +
+geom_text(
+  size = 10,
+  label = c(
+    "\U1F352", #cherry
+    "\U1F370", #cake
+    "\U1F353", #strawb
+    "\U1F337", #tulip
+    "\U1F36D", #lolly
+    "\U1F351", #peach
+    "\U1F33C", #blossom
+    "\U1F407", #bunny
+    "\U1F41D", #bee
+    "\U1F433" #whale
+  ),
+  colour = "white",
+  nudge_y = 0.5
+) +
+ylim(0,30) +
+theme_minimal() +
+theme(
+  legend.position = "None",
+  axis.title.x=element_blank(),
+  axis.title.y=element_blank(),
+  axis.text.x = element_text(angle = 30, hjust=1, size = 15),
+  axis.text.y = element_text(size = 20)
+) + 
+scale_colour_manual(values = palette)
 
 ```
