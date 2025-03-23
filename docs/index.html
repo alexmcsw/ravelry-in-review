@@ -53,7 +53,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="quarto-dashboard-header">
 <nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
   <div class="navbar-container container-fluid">
-    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>    
 
@@ -66,15 +66,17 @@ ul.task-list li input[type="checkbox"] {
         <div class="navbar-author">Alex McSween</div>
       </div>
     </div>
-<div class="quarto-dashboard-links"><a class="quarto-dashboard-link" href="https://github.com/alexmcsw/ravelry-in-review"><i class="bi bi-github"></i></a><a class="quarto-dashboard-link" href="https://www.ravelry.com/people/amcsw"><i class="bi bi-activity"></i></a></div></div>
+<a class="quarto-color-scheme-toggle" href="" onclick="window.quartoToggleColorScheme(); return false;"><i class="bi"></i></a><div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-all-time" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#all-time" data-scrolling="false" href="#all-time" aria-controls="all-time" aria-selected="true"><span class="nav-link-text">All-time</span></a></li><li class="nav-item" role="presentation"><a id="tab-section" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#section" data-scrolling="false" href="#section" aria-controls="section" aria-selected="false"><span class="nav-link-text">2024</span></a></li></ul><div class="quarto-dashboard-links"><a class="quarto-dashboard-link" href="https://github.com/alexmcsw/ravelry-in-review"><i class="bi bi-github"></i></a><a class="quarto-dashboard-link" href="https://www.ravelry.com/people/amcsw"><i class="bi bi-activity"></i></a></div></div></div>
 </nav>
 </header>
-<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill">  
+<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">  
 
-<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 70fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="all-time" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-all-time">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 70fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-secondary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-secondary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
 <div data-icon="check-all" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
@@ -90,7 +92,7 @@ Completed Projects
 </div>
 </div>
 </div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell bslib-card html-fill-container bslib-value-box showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()" style=" background: #ffce67;">
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()" style=" background: #ffce67;">
 <div class="card-body html-fill-item html-fill-container">
 <div data-icon="cone-striped" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
@@ -106,7 +108,7 @@ Active WIPs
 </div>
 </div>
 </div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-light showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-light showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
 <div data-icon="rulers" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
@@ -122,7 +124,7 @@ Meters knitted
 </div>
 </div>
 </div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell bslib-card html-fill-container bslib-value-box bg-pink showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-pink showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
 <div data-icon="gift" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
@@ -140,10 +142,10 @@ Gift percentage
 </div>
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 </div>
-<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 40fr) minmax(3em, 60fr);
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 25fr) minmax(3em, 35fr) minmax(3em, 40fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card cell bslib-card html-fill-container" data-title="Most favourited project" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Most favourited project" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-header"><div class="card-title">Most favourited project</div></div>
 <div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
 <div class="cell-output-display html-fill-item html-fill-container">
@@ -151,23 +153,23 @@ grid-auto-rows: minmax(0, 1fr);">
 </div>
 <div class="cell-output-display html-fill-item html-fill-container">
 <div class="html-fill-item html-fill-container">
-<div id="jukwzbrrae" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:hidden;width:auto;height:auto;" class="html-fill-item html-fill-container">
-<style>#jukwzbrrae table {
+<div id="llfwvlshse" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:hidden;width:auto;height:auto;" class="html-fill-item html-fill-container">
+<style>#llfwvlshse table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jukwzbrrae thead, #jukwzbrrae tbody, #jukwzbrrae tfoot, #jukwzbrrae tr, #jukwzbrrae td, #jukwzbrrae th {
+#llfwvlshse thead, #llfwvlshse tbody, #llfwvlshse tfoot, #llfwvlshse tr, #llfwvlshse td, #llfwvlshse th {
   border-style: none;
 }
 
-#jukwzbrrae p {
+#llfwvlshse p {
   margin: 0;
   padding: 0;
 }
 
-#jukwzbrrae .gt_table {
+#llfwvlshse .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -193,12 +195,12 @@ grid-auto-rows: minmax(0, 1fr);">
   border-left-color: #D3D3D3;
 }
 
-#jukwzbrrae .gt_caption {
+#llfwvlshse .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jukwzbrrae .gt_title {
+#llfwvlshse .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -210,7 +212,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-width: 0;
 }
 
-#jukwzbrrae .gt_subtitle {
+#llfwvlshse .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -222,7 +224,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-top-width: 0;
 }
 
-#jukwzbrrae .gt_heading {
+#llfwvlshse .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -234,13 +236,13 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#jukwzbrrae .gt_bottom_border {
+#llfwvlshse .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #CB2A7B;
 }
 
-#jukwzbrrae .gt_col_headings {
+#llfwvlshse .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #CB2A7B;
@@ -255,7 +257,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#jukwzbrrae .gt_col_heading {
+#llfwvlshse .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -275,7 +277,7 @@ grid-auto-rows: minmax(0, 1fr);">
   overflow-x: hidden;
 }
 
-#jukwzbrrae .gt_column_spanner_outer {
+#llfwvlshse .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -287,15 +289,15 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 4px;
 }
 
-#jukwzbrrae .gt_column_spanner_outer:first-child {
+#llfwvlshse .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jukwzbrrae .gt_column_spanner_outer:last-child {
+#llfwvlshse .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jukwzbrrae .gt_column_spanner {
+#llfwvlshse .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #CB2A7B;
@@ -307,11 +309,11 @@ grid-auto-rows: minmax(0, 1fr);">
   width: 100%;
 }
 
-#jukwzbrrae .gt_spanner_row {
+#llfwvlshse .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jukwzbrrae .gt_group_heading {
+#llfwvlshse .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -337,7 +339,7 @@ grid-auto-rows: minmax(0, 1fr);">
   text-align: left;
 }
 
-#jukwzbrrae .gt_empty_group_heading {
+#llfwvlshse .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -352,15 +354,15 @@ grid-auto-rows: minmax(0, 1fr);">
   vertical-align: middle;
 }
 
-#jukwzbrrae .gt_from_md > :first-child {
+#llfwvlshse .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jukwzbrrae .gt_from_md > :last-child {
+#llfwvlshse .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jukwzbrrae .gt_row {
+#llfwvlshse .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -379,7 +381,7 @@ grid-auto-rows: minmax(0, 1fr);">
   overflow-x: hidden;
 }
 
-#jukwzbrrae .gt_stub {
+#llfwvlshse .gt_stub {
   color: #FFFFFF;
   background-color: #CB2A7B;
   font-size: 100%;
@@ -392,7 +394,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#jukwzbrrae .gt_stub_row_group {
+#llfwvlshse .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -406,15 +408,15 @@ grid-auto-rows: minmax(0, 1fr);">
   vertical-align: top;
 }
 
-#jukwzbrrae .gt_row_group_first td {
+#llfwvlshse .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jukwzbrrae .gt_row_group_first th {
+#llfwvlshse .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jukwzbrrae .gt_summary_row {
+#llfwvlshse .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -424,16 +426,16 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#jukwzbrrae .gt_first_summary_row {
+#llfwvlshse .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #CB2A7B;
 }
 
-#jukwzbrrae .gt_first_summary_row.thick {
+#llfwvlshse .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jukwzbrrae .gt_last_summary_row {
+#llfwvlshse .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -443,7 +445,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #CB2A7B;
 }
 
-#jukwzbrrae .gt_grand_summary_row {
+#llfwvlshse .gt_grand_summary_row {
   color: #333333;
   background-color: #FFC6E3;
   text-transform: inherit;
@@ -453,7 +455,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#jukwzbrrae .gt_first_grand_summary_row {
+#llfwvlshse .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -463,7 +465,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-top-color: #CB2A7B;
 }
 
-#jukwzbrrae .gt_last_grand_summary_row_top {
+#llfwvlshse .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -473,11 +475,11 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #CB2A7B;
 }
 
-#jukwzbrrae .gt_striped {
+#llfwvlshse .gt_striped {
   background-color: #F4F4F4;
 }
 
-#jukwzbrrae .gt_table_body {
+#llfwvlshse .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #CB2A7B;
@@ -486,7 +488,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-bottom-color: #CB2A7B;
 }
 
-#jukwzbrrae .gt_footnotes {
+#llfwvlshse .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -500,7 +502,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#jukwzbrrae .gt_footnote {
+#llfwvlshse .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -509,7 +511,7 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#jukwzbrrae .gt_sourcenotes {
+#llfwvlshse .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -523,7 +525,7 @@ grid-auto-rows: minmax(0, 1fr);">
   border-right-color: #D3D3D3;
 }
 
-#jukwzbrrae .gt_sourcenote {
+#llfwvlshse .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -531,72 +533,72 @@ grid-auto-rows: minmax(0, 1fr);">
   padding-right: 5px;
 }
 
-#jukwzbrrae .gt_left {
+#llfwvlshse .gt_left {
   text-align: left;
 }
 
-#jukwzbrrae .gt_center {
+#llfwvlshse .gt_center {
   text-align: center;
 }
 
-#jukwzbrrae .gt_right {
+#llfwvlshse .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jukwzbrrae .gt_font_normal {
+#llfwvlshse .gt_font_normal {
   font-weight: normal;
 }
 
-#jukwzbrrae .gt_font_bold {
+#llfwvlshse .gt_font_bold {
   font-weight: bold;
 }
 
-#jukwzbrrae .gt_font_italic {
+#llfwvlshse .gt_font_italic {
   font-style: italic;
 }
 
-#jukwzbrrae .gt_super {
+#llfwvlshse .gt_super {
   font-size: 65%;
 }
 
-#jukwzbrrae .gt_footnote_marks {
+#llfwvlshse .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jukwzbrrae .gt_asterisk {
+#llfwvlshse .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jukwzbrrae .gt_indent_1 {
+#llfwvlshse .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jukwzbrrae .gt_indent_2 {
+#llfwvlshse .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jukwzbrrae .gt_indent_3 {
+#llfwvlshse .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jukwzbrrae .gt_indent_4 {
+#llfwvlshse .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jukwzbrrae .gt_indent_5 {
+#llfwvlshse .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jukwzbrrae .katex-display {
+#llfwvlshse .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jukwzbrrae div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#llfwvlshse div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -640,8 +642,8 @@ Comment
 </div>
 </div>
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div><div class="bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card cell bslib-card html-fill-container" data-title="Knitting categories" data-bslib-card-init="" data-require-bs-caller="card()">
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Knitting categories" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-header"><div class="card-title">Knitting categories</div></div>
 <div class="card-body html-fill-item html-fill-container" style="padding: 4px;">
 <div class="cell-output-display html-fill-item html-fill-container">
@@ -649,8 +651,611 @@ Comment
 </div>
 </div>
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Knitting categories" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-header"><div class="card-title">Knitting categories</div></div>
+<div class="card-body html-fill-item html-fill-container" style="padding: 4px;">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+</div>
+<div id="section" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-section">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 70fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-secondary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="check-all" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
 
+<i class="bi bi-check-all"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Completed Projects
+</p>
+<p class="value-box-value">
+9
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()" style=" background: #ffce67;">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="cone-striped" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-cone-striped"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Active WIPs
+</p>
+<p class="value-box-value">
+5
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-light showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="rulers" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-rulers"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Meters knitted
+</p>
+<p class="value-box-value">
+2399.6
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-pink showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="gift" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-gift"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Gift percentage
+</p>
+<p class="value-box-value">
+0
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 25fr) minmax(3em, 35fr) minmax(3em, 40fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Most favourited project" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-header"><div class="card-title">Most favourited project</div></div>
+<div class="card-body html-fill-item html-fill-container" style="padding: 0px;">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container">
+<div id="okxrypnfrc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:hidden;width:auto;height:auto;" class="html-fill-item html-fill-container">
+<style>#okxrypnfrc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#okxrypnfrc thead, #okxrypnfrc tbody, #okxrypnfrc tfoot, #okxrypnfrc tr, #okxrypnfrc td, #okxrypnfrc th {
+  border-style: none;
+}
+
+#okxrypnfrc p {
+  margin: 0;
+  padding: 0;
+}
+
+#okxrypnfrc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 90%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #99195F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #99195F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#okxrypnfrc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#okxrypnfrc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#okxrypnfrc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#okxrypnfrc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#okxrypnfrc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #CB2A7B;
+}
+
+#okxrypnfrc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #CB2A7B;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #CB2A7B;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#okxrypnfrc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#okxrypnfrc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#okxrypnfrc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#okxrypnfrc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#okxrypnfrc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #CB2A7B;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#okxrypnfrc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#okxrypnfrc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #CB2A7B;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #CB2A7B;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#okxrypnfrc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #CB2A7B;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #CB2A7B;
+  vertical-align: middle;
+}
+
+#okxrypnfrc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#okxrypnfrc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#okxrypnfrc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #FFC6E3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #FFC6E3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #FFC6E3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#okxrypnfrc .gt_stub {
+  color: #FFFFFF;
+  background-color: #CB2A7B;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #CB2A7B;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#okxrypnfrc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#okxrypnfrc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#okxrypnfrc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#okxrypnfrc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#okxrypnfrc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #CB2A7B;
+}
+
+#okxrypnfrc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#okxrypnfrc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #CB2A7B;
+}
+
+#okxrypnfrc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFC6E3;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#okxrypnfrc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #CB2A7B;
+}
+
+#okxrypnfrc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #CB2A7B;
+}
+
+#okxrypnfrc .gt_striped {
+  background-color: #F4F4F4;
+}
+
+#okxrypnfrc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #CB2A7B;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #CB2A7B;
+}
+
+#okxrypnfrc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#okxrypnfrc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#okxrypnfrc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#okxrypnfrc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#okxrypnfrc .gt_left {
+  text-align: left;
+}
+
+#okxrypnfrc .gt_center {
+  text-align: center;
+}
+
+#okxrypnfrc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#okxrypnfrc .gt_font_normal {
+  font-weight: normal;
+}
+
+#okxrypnfrc .gt_font_bold {
+  font-weight: bold;
+}
+
+#okxrypnfrc .gt_font_italic {
+  font-style: italic;
+}
+
+#okxrypnfrc .gt_super {
+  font-size: 65%;
+}
+
+#okxrypnfrc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#okxrypnfrc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#okxrypnfrc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#okxrypnfrc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#okxrypnfrc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#okxrypnfrc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#okxrypnfrc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#okxrypnfrc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#okxrypnfrc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 75%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Project</th>
+<th id="favorites_count" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="name">Yoko Top (<span style="white-space: pre;"><a href="https://www.ravelry.com/projects/amcsw/yoko-top" target="_blank" style="color:#008B8B;text-decoration:none;display: inline-block;">Ravelry</a></span>)</td>
+<td class="gt_row gt_right" headers="favorites_count"><span style="white-space:nowrap;">
+<svg aria-label="Heart" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;stroke:red;position:relative;">
+<title>
+Heart
+</title>
+<path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9zM239.1 145c-.4-.3-.7-.7-1-1.1l-17.8-20c0 0-.1-.1-.1-.1c0 0 0 0 0 0c-23.1-25.9-58-37.7-92-31.2C81.6 101.5 48 142.1 48 189.5v3.3c0 28.5 11.9 55.8 32.8 75.2L256 430.7 431.2 268c20.9-19.4 32.8-46.7 32.8-75.2v-3.3c0-47.3-33.6-88-80.1-96.9c-34-6.5-69 5.4-92 31.2c0 0 0 0-.1 .1s0 0-.1 .1l-17.8 20c-.3 .4-.7 .7-1 1.1c-4.5 4.5-10.6 7-16.9 7s-12.4-2.5-16.9-7z"></path>
+</svg>
+</span> 3
+<span style="white-space:nowrap;">
+<svg aria-label="Comment" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;stroke:blue;position:relative;">
+<title>
+Comment
+</title>
+<path d="M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7zM21.2 431.9c1.8-2.7 3.5-5.4 5.1-8.1c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208s-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6c-15.1 6.6-32.3 12.6-50.1 16.1c-.8 .2-1.6 .3-2.4 .5c-4.4 .8-8.7 1.5-13.2 1.9c-.2 0-.5 .1-.7 .1c-5.1 .5-10.2 .8-15.3 .8c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c4.1-4.2 7.8-8.7 11.3-13.5c1.7-2.3 3.3-4.6 4.8-6.9c.1-.2 .2-.3 .3-.5z"></path>
+</svg>
+</span> 0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Knitting categories" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-header"><div class="card-title">Knitting categories</div></div>
+<div class="card-body html-fill-item html-fill-container" style="padding: 4px;">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Knitting categories" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-header"><div class="card-title">Knitting categories</div></div>
+<div class="card-body html-fill-item html-fill-container" style="padding: 4px;">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
 </div>
 </div>
 </div>

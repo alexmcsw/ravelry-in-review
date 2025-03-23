@@ -21,6 +21,7 @@ library(dplyr)
 library(ggplot2)
 library(ggimage)
 library(gt)
+library(stringr)
 
 path <- "./data/json/projects/"
 files <- dir(path, pattern = "*.json")
@@ -58,6 +59,7 @@ palette <- c(
 
 ```
 
+# All-time
 ```{r}
 
 open_projects <- df |> filter(status_name == "In progress") |> count() |> as.numeric()
@@ -118,7 +120,7 @@ list(
 ```
 
 ## Row {height=70%}
-### Column {width=40%}
+### Column {width=25%}
 
 ```{r}
 
@@ -175,7 +177,8 @@ table
   
 ```
 
-### Column {width=60%}
+
+### Column {width=35%}
 ```{r}
 #| title: Knitting categories
 #| padding: 4px
@@ -232,7 +235,7 @@ category = case_when(
 group_by(category) |>
 summarize(count = n()) |>
 ggplot(aes(x = category, y = count, colour = category)) +
-geom_segment(aes(x = category, xend = category, y = 0, yend = count - 1.5, alpha = 0.8), linewidth = 2) +
+geom_segment(aes(x = category, xend = category, y = 0, yend = count - 1.8, alpha = 0.9), linewidth = 2) +
 geom_point(size = 15, aes(alpha = 0.9)) +
 geom_text(
   size = 10,
@@ -251,7 +254,6 @@ geom_text(
   colour = "white",
   nudge_y = 0.5
 ) +
-ylim(0,30) +
 theme_minimal() +
 theme(
   legend.position = "None",
@@ -260,6 +262,283 @@ theme(
   axis.text.x = element_text(angle = 30, hjust=1, size = 15),
   axis.text.y = element_text(size = 20)
 ) + 
-scale_colour_manual(values = palette)
+scale_colour_manual(values = sample(palette), 11)
+
+```
+
+### Column {width=40%}
+```{r}
+#| title: Knitting categories
+#| padding: 4px
+#| expandable: false
+
+df |> select("packs.yarn_weight.name", "packs.yarn_weight.name1") |> mutate(
+  weight = case_when(
+    is.na(packs.yarn_weight.name) ~ packs.yarn_weight.name1,
+    .default = packs.yarn_weight.name
+  ),
+  .keep = "unused"
+) |>
+group_by(weight) |>
+summarize(count = n()) |>
+filter(!is.na(weight)) |>
+mutate(weight = weight |> factor(levels = c("Lace", "Light Fingering", "Fingering", "Sport", "DK", "Worsted", "Aran", "Bulky"))) |>
+ggplot(aes(x=as.factor(weight), y=count, alpha = 0.9)) +
+geom_bar(stat="identity", aes(fill = weight)) +
+theme_minimal() +
+theme(
+  legend.position = "None",
+  axis.title.x=element_blank(),
+  axis.title.y=element_blank(),
+  axis.text.x = element_text(angle = 30, hjust=1, size = 15),
+  axis.text.y = element_text(size = 20)
+) + 
+scale_fill_manual(values = sample(palette, 8)) 
+
+
+```
+
+
+# 2024
+```{r}
+
+df <- df |> filter(if_any(c(completed, created_at, started), str_detect, pattern = "2024"))
+
+open_projects <- df |> filter(status_name == "In progress") |> count() |> as.numeric()
+
+completed_projects <- df |> filter(status_name == "Finished") |> count() |> as.numeric()
+
+gift_projects <- df |> filter(!(made_for %in% c("me", "Me", "me!", "ME", "", NA))) |> count() |> as.numeric()
+
+me_projects <- df |> filter((made_for %in% c("me", "Me", "me!", "ME", "", NA))) |> count() |> as.numeric()
+
+meterage <- df |> select(contains("packs.total_meters")) |> mutate(across(everything(), as.numeric)) |> sum(na.rm = TRUE)
+
+```
+## Row {height="20%"}
+
+```{r}
+#| content: valuebox
+#| title: "Completed Projects"
+
+list(
+  icon = "check-all",
+  color = "secondary",
+  value = completed_projects
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Active WIPs"
+
+list(
+  icon = "cone-striped",
+  color = "#ffce67",
+  value = open_projects
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Meters knitted"
+
+list(
+  icon = "rulers",
+  color = "light",
+  value = meterage
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Gift percentage"
+
+list(
+  icon = "gift",
+  color = "pink",
+  value = round((gift_projects / me_projects)*100)
+)
+```
+
+## Row {height=70%}
+### Column {width=25%}
+
+```{r}
+
+most_favourited <- df |> mutate(favorites_count = as.numeric(favorites_count)) |> filter(favorites_count == max(favorites_count)) |> head(1)
+
+
+images <- list.files(
+    path = "data/photos/project",
+    pattern = paste0(most_favourited |> select(permalink), "-\\d.jpg"),
+    full.names = TRUE
+)
+```
+
+```{r}
+#| title: Most favourited project
+#| padding: 0px
+#| expandable: false
+
+
+plot <- ggplot() + geom_image(aes(x = 1,  y= 1, image = sample(images, 1)), size = 0.7) + theme_void()
+
+table <- most_favourited |> 
+    select(name, favorites_count, links.self.href, comments_count) |>
+    gt() |>
+    fmt_url(
+    columns = links.self.href,
+    label = "Ravelry",
+    show_underline = FALSE
+  ) |>
+    cols_add(heart = "Heart", comment = "comment") |>
+    fmt_icon(heart, fill_color = "red", stroke_color = "red") |>
+    fmt_icon(comment, fill_color = "blue", stroke_color = "blue") |>
+    cols_merge(
+        columns = c(name, links.self.href),
+        pattern = "{1} ({2})"
+    )  |>
+    cols_merge(
+        columns = c(favorites_count, heart, comments_count, comment),
+        pattern = "{2} {1} {4} {3}"
+    ) |>
+    cols_width(name ~ pct(75), favorites_count ~ pct(25)) |>
+    cols_label(name = "Project", favorites_count = "") |>
+    opt_stylize(color = "pink") |>
+    tab_options(
+      table.width = pct(90),
+      container.overflow.y = FALSE
+    )
+  
+
+
+plot
+
+table
+  
+```
+
+
+### Column {width=35%}
+```{r}
+#| title: Knitting categories
+#| padding: 4px
+#| expandable: false
+
+#define clothing categoryies
+accessory <- "bag|purse|clutch|pouch"
+cardigan <- "cardi"
+hats <- "hat|toque|beanie|hood|balaclava|hue"
+mitts <- "mitten|gloves"
+scarf <- "scarf|shawl|collar"
+shirt <- "tee|tank|polo|cami|top|shirt|blouse|bralette"
+socks <- "socks|slippers|boots"
+sweater <- "sweater|jumper|pullover"
+vest <- "vest|slipover"
+
+df_category <- df |> mutate(
+  category = case_when(
+    grepl(accessory, tolower(pattern_name)) ~ "Bags",
+    grepl(cardigan, tolower(pattern_name)) ~ "Cardigans",
+    grepl(hats, tolower(pattern_name)) ~ "Hats",
+    grepl(mitts, tolower(pattern_name)) ~ "Mittens",
+    grepl(scarf, tolower(pattern_name)) ~ "Scarves",
+    grepl(shirt, tolower(pattern_name)) ~ "Tops",
+    grepl(socks, tolower(pattern_name)) ~ "Socks",
+    grepl(sweater, tolower(pattern_name)) ~ "Sweaters",
+    grepl(vest, tolower(pattern_name)) ~ "Vests",
+    .default = "Other"
+  ),
+  category = case_when(
+    category == "Other" & grepl(accessory, tolower(name)) ~ "Bags",
+    category == "Other" & grepl(cardigan, tolower(name)) ~ "Cardigans",
+    category == "Other" & grepl(hats, tolower(name)) ~ "Hats",
+    category == "Other" & grepl(mitts, tolower(name)) ~ "Mittens",
+    category == "Other" & grepl(scarf, tolower(name)) ~ "Scarves",
+    category == "Other" & grepl(shirt, tolower(name)) ~ "Tops",
+    category == "Other" & grepl(socks, tolower(name)) ~ "Socks",
+    category == "Other" & grepl(sweater, tolower(name)) ~ "Sweaters",
+    category == "Other" & grepl(vest, tolower(name)) ~ "Vests",
+    .default = category
+),
+# a bit of manual entry here
+# lesson is to be more specific in my rav projects!!
+category = case_when(
+  grepl("tulip|delphinus|vair|cloudbow", tolower(name)) ~ "Sweaters",
+  grepl("sulina|kostner|silvatica|snaraness|gossamer", tolower(name)) ~ "Scarves",
+  grepl("springfrost|coaticook|reverie", tolower(name)) ~ "Socks",
+  grepl("willapund", tolower(name)) ~ "Vests",
+  grepl("llelua", tolower(name)) ~ "Hats",
+  grepl("cyanotype", tolower(name)) ~ "Mittens",
+  .default = category
+)
+) |>
+group_by(category) |>
+summarize(count = n())
+
+df_category |> ggplot(aes(x = category, y = count, colour = category)) +
+geom_segment(aes(x = category, xend = category, y = 0, yend = count - 1.8, alpha = 0.9), linewidth = 2) +
+geom_point(size = 15, aes(alpha = 0.9)) +
+geom_text(
+  size = 10,
+  label = sample(c(
+    "\U1F352", #cherry
+    "\U1F370", #cake
+    "\U1F353", #strawb
+    "\U1F337", #tulip
+    "\U1F36D", #lolly
+    "\U1F351", #peach
+    "\U1F33C", #blossom
+    "\U1F407", #bunny
+    "\U1F41D", #bee
+    "\U1F433" #whale
+  ),
+  nrow(df_category)
+  ),
+  colour = "white",
+  nudge_y = 0.5
+) +
+theme_minimal() +
+theme(
+  legend.position = "None",
+  axis.title.x=element_blank(),
+  axis.title.y=element_blank(),
+  axis.text.x = element_text(angle = 30, hjust=1, size = 15),
+  axis.text.y = element_text(size = 20)
+) + 
+scale_colour_manual(values = sample(palette), nrow(df_category))
+
+```
+
+### Column {width=40%}
+```{r}
+#| title: Knitting categories
+#| padding: 4px
+#| expandable: false
+
+df |> select("packs.yarn_weight.name", "packs.yarn_weight.name1") |> mutate(
+  weight = case_when(
+    is.na(packs.yarn_weight.name) ~ packs.yarn_weight.name1,
+    .default = packs.yarn_weight.name
+  ),
+  .keep = "unused"
+) |>
+group_by(weight) |>
+summarize(count = n()) |>
+filter(!is.na(weight)) |>
+mutate(weight = weight |> factor(levels = c("Lace", "Light Fingering", "Fingering", "Sport", "DK", "Worsted", "Aran", "Bulky"))) |>
+ggplot(aes(x=as.factor(weight), y=count, alpha = 0.9)) +
+geom_bar(stat="identity", aes(fill = weight)) +
+theme_minimal() +
+theme(
+  legend.position = "None",
+  axis.title.x=element_blank(),
+  axis.title.y=element_blank(),
+  axis.text.x = element_text(angle = 30, hjust=1, size = 15),
+  axis.text.y = element_text(size = 20)
+) + 
+scale_fill_manual(values = sample(palette, 8)) 
+
 
 ```
