@@ -235,8 +235,8 @@ category = case_when(
 group_by(category) |>
 summarize(count = n()) |>
 ggplot(aes(x = category, y = count, colour = category)) +
-geom_segment(aes(x = category, xend = category, y = 0, yend = count - 1.8, alpha = 0.9), linewidth = 2) +
-geom_point(size = 15, aes(alpha = 0.9)) +
+geom_segment(aes(x = category, xend = category, y = 0, yend = count, alpha = 0.9), linewidth = 2) +
+geom_point(size = 15) +
 geom_text(
   size = 10,
   label = c(
@@ -478,8 +478,8 @@ group_by(category) |>
 summarize(count = n())
 
 df_category |> ggplot(aes(x = category, y = count, colour = category)) +
-geom_segment(aes(x = category, xend = category, y = 0, yend = count - 1.8, alpha = 0.9), linewidth = 2) +
-geom_point(size = 15, aes(alpha = 0.9)) +
+geom_segment(aes(x = category, xend = category, y = 0, yend = count, alpha = 0.9), linewidth = 2) +
+geom_point(size = 15) +
 geom_text(
   size = 10,
   label = sample(c(
@@ -497,7 +497,7 @@ geom_text(
   nrow(df_category)
   ),
   colour = "white",
-  nudge_y = 0.5
+  nudge_y = 0.2
 ) +
 theme_minimal() +
 theme(
