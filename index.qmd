@@ -11,7 +11,6 @@ format:
        href: https://www.ravelry.com/people/amcsw
     theme: 
         light: minty
-        dark: cyborg
 ---
 
 ```{r}

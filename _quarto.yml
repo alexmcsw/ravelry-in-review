@@ -10,7 +10,6 @@ format:
        href: https://www.ravelry.com/people/amcsw
     theme: 
         light: minty
-        dark: cyborg
 project:
   output-dir: docs
 execute:
