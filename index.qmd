@@ -280,17 +280,14 @@ df_date <- df_category |>
     Project = seq(nrow(df_category)),
     .keep = "unused"
   ) |>
-unnest(cols = c(Date)) |>
-group_by(Date, category) |>
-summarize(count = n())
+unnest(cols = c(Date))
+
 
 df_date |>
-ggplot(aes(x=Date, y=count)) + 
-stat_smooth(se=FALSE, geom="area",
-              method = 'loess', alpha=.5,
-              span = 0.8) +
-              facet_wrap(vars(category))
-geom_line(alpha=0.6)
+ggplot(aes(x=Date, after_stat(count), fill = category)) + 
+geom_density(position = "stack", alpha = 0.5, colour = "white") +
+scale_fill_manual(values = palette) +
+theme_minimal()
 
 
 ```
