@@ -22,6 +22,8 @@ library(ggplot2)
 library(ggimage)
 library(gt)
 library(stringr)
+library(tidyr)
+library(zoo)
 lapply(
   list.files("./functions/", full.names = TRUE),
   source
@@ -45,20 +47,21 @@ for (file in files) {
 }
 
 palette <- c(
-  "#007bff",
   "#6610f2",
+  "#007bff",
+  "#78c2ad",
   "#6f42c1",
   "#e83e8c",
-  "#ff7851",
-  "#fd7e14",
+  "#20c997",
   "#ffce67",
   "#56cc9d",
-  "#20c997",
+  "#ff7851",
   "#6cc3d5",
-  "#78c2ad",
+  "#fd7e14",
   "#f3969a"
 )
 
+set.seed(Sys.Date())
 
 
 ```
@@ -186,7 +189,7 @@ table
 ```
 
 
-### Column {width=35%}
+### Column {width=75%}
 ```{r}
 #| title: Knitting categories
 #| padding: 4px
@@ -203,7 +206,7 @@ socks <- "socks|slippers|boots"
 sweater <- "sweater|jumper|pullover"
 vest <- "vest|slipover"
 
-df |> mutate(
+df_category <- df |> mutate(
   category = case_when(
     grepl(accessory, tolower(pattern_name)) ~ "Bags",
     grepl(cardigan, tolower(pattern_name)) ~ "Cardigans",
@@ -240,68 +243,54 @@ category = case_when(
   .default = category
 )
 ) |>
-group_by(category) |>
-summarize(count = n()) |>
-ggplot(aes(x = category, y = count, colour = category)) +
-geom_segment(aes(x = category, xend = category, y = 0, yend = count, alpha = 0.9), linewidth = 2) +
-geom_point(size = 15) +
-geom_text(
-  size = 10,
-  label = c(
-    "\U1F352", #cherry
-    "\U1F370", #cake
-    "\U1F353", #strawb
-    "\U1F337", #tulip
-    "\U1F36D", #lolly
-    "\U1F351", #peach
-    "\U1F33C", #blossom
-    "\U1F407", #bunny
-    "\U1F41D", #bee
-    "\U1F433" #whale
+select(completed, created_at, started, updated_at, category) |>
+mutate(across(c(completed, created_at, started, updated_at), as.Date)) |>
+mutate(
+  started = case_when(
+    is.na(started) ~ created_at,
+    .default = started
   ),
-  colour = "white",
-  nudge_y = 0.5
-) +
-theme_minimal() +
-theme(
-  legend.position = "None",
-  axis.title.x=element_blank(),
-  axis.title.y=element_blank(),
-  axis.text.x = element_text(angle = 30, hjust=1, size = 15),
-  axis.text.y = element_text(size = 20)
-) + 
-scale_colour_manual(values = sample(palette), 11)
-
+  completed = case_when(
+    is.na(completed) ~ updated_at,
+    .default = completed
+  ),
+  .keep = "unused"
+) |> filter(started < completed)
 ```
 
-### Column {width=40%}
 ```{r}
 #| title: Knitting categories
 #| padding: 4px
 #| expandable: false
+#| fig-width: 15
+#| fig-height: 5
 
-df |> select("packs.yarn_weight.name", "packs.yarn_weight.name1") |> mutate(
-  weight = case_when(
-    is.na(packs.yarn_weight.name) ~ packs.yarn_weight.name1,
-    .default = packs.yarn_weight.name
-  ),
-  .keep = "unused"
-) |>
-group_by(weight) |>
-summarize(count = n()) |>
-filter(!is.na(weight)) |>
-mutate(weight = weight |> factor(levels = c("Lace", "Light Fingering", "Fingering", "Sport", "DK", "Worsted", "Aran", "Bulky"))) |>
-ggplot(aes(x=as.factor(weight), y=count, alpha = 0.9)) +
-geom_bar(stat="identity", aes(fill = weight)) +
-theme_minimal() +
-theme(
-  legend.position = "None",
-  axis.title.x=element_blank(),
-  axis.title.y=element_blank(),
-  axis.text.x = element_text(angle = 30, hjust=1, size = 15),
-  axis.text.y = element_text(size = 20)
-) + 
-scale_fill_manual(values = sample(palette, 8)) 
+date_df <- data.frame(
+  date = seq(min(df_category$started), max(df_category$completed), by = "days")
+)
+
+df_date <- df_category |>
+  mutate(
+    Date = map2(
+      as.Date(started),
+      as.Date(completed),
+      seq,
+      by = "1 day"
+    ),
+    Project = seq(nrow(df_category)),
+    .keep = "unused"
+  ) |>
+unnest(cols = c(Date)) |>
+group_by(Date, category) |>
+summarize(count = n())
+
+df_date |>
+ggplot(aes(x=Date, y=count)) + 
+stat_smooth(se=FALSE, geom="area",
+              method = 'loess', alpha=.5,
+              span = 0.8) +
+              facet_wrap(vars(category))
+geom_line(alpha=0.6)
 
 
 ```
@@ -392,7 +381,6 @@ table
 #| title: Knitting categories
 #| padding: 4px
 #| expandable: false
-
 plot_categories()
 ```
 
@@ -408,10 +396,10 @@ plot_weights()
 
 
 
-# 2021
+# 2022
 ```{r}
 
-make_value_boxes("2021")
+make_value_boxes("2022")
 
 ```
 ## Row {height="20%"}

@@ -1,4 +1,20 @@
 plot_categories <- function() {
+
+    categories <- c(
+        "Bags",
+        "Cardigans",
+        "Hats",
+        "Mittens",
+        "Other",
+        "Scarves",
+        "Socks",
+        "Sweaters",
+        "Tops",
+        "Vests"
+    )
+
+    set.seed(Sys.Date())
+
     df_category <- df_year |> mutate(
         category = case_when(
             grepl(accessory, tolower(pattern_name)) ~ "Bags",
@@ -37,12 +53,21 @@ plot_categories <- function() {
         )
         ) |>
         group_by(category) |>
-        summarize(count = n())
+        summarize(count = n()) |>
+        rbind(
+            data.frame(
+                category = categories,
+                count = 0
+            )
+        ) |>
+        distinct(category, .keep_all = TRUE)
 
-        df_category |> ggplot(aes(x = category, y = count, colour = category)) +
-        geom_segment(aes(x = category, xend = category, y = 0, yend = count, alpha = 0.9), linewidth = 2) +
-        geom_point(size = 15) +
+        ggplot() +
+        geom_segment(data = df_category, aes(x = category, xend = category, y = 0, yend = count, alpha = 0.9, colour = category), linewidth = 2) +
+        geom_point(data = df_category |> filter(count > 0), aes(x = category, y = count, colour = category), size = 15) +
         geom_text(
+        data = df_category |> filter(count > 0),
+        aes(x = category, y = count),
         size = 10,
         label = sample(c(
             "\U1F352", #cherry
@@ -56,7 +81,7 @@ plot_categories <- function() {
             "\U1F41D", #bee
             "\U1F433" #whale
         ),
-        nrow(df_category)
+        nrow(df_category |> filter(count > 0))
         ),
         colour = "white",
         nudge_y = 0.2
@@ -64,11 +89,12 @@ plot_categories <- function() {
         theme_minimal() +
         theme(
         legend.position = "None",
-        axis.title.x=element_blank(),
-        axis.title.y=element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
         axis.text.x = element_text(angle = 30, hjust=1, size = 15),
         axis.text.y = element_text(size = 20)
         ) + 
-        scale_colour_manual(values = sample(palette), nrow(df_category)) +
+        scale_x_discrete(labels = categories, breaks = categories) +
+        scale_colour_manual(values = palette) +
         coord_cartesian()
 }
