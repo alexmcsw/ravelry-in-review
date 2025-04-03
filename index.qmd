@@ -288,8 +288,13 @@ df_date |>
 ggplot(aes(x=Date, after_stat(count), fill = category)) + 
 geom_density(position = "stack", alpha = 0.5, colour = "white") +
 scale_fill_manual(values = palette) +
-theme_minimal()
-
+theme_minimal() + 
+theme(
+  axis.title.x = element_blank(),
+  axis.title.y = element_blank(),
+  axis.text.x = element_text(size = 15),
+  axis.text.y = element_text(size = 20)
+)
 
 ```
 
