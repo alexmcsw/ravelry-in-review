@@ -259,8 +259,8 @@ mutate(
 ```
 
 ```{r}
-#| title: Knitting categories
-#| padding: 4px
+#| title: Projects over time
+#| #| padding: 4px
 #| expandable: false
 #| fig-width: 15
 #| fig-height: 5
@@ -283,6 +283,7 @@ df_date <- df_category |>
 unnest(cols = c(Date))
 
 
+
 df_date |>
 ggplot(aes(x=Date, after_stat(count), fill = category)) + 
 geom_density(position = "stack", alpha = 0.5, colour = "white") +
@@ -297,6 +298,105 @@ theme_minimal()
 ```{r}
 
 make_value_boxes("2024")
+
+```
+## Row {height="20%"}
+
+```{r}
+#| content: valuebox
+#| title: "Completed Projects"
+
+list(
+  icon = "check-all",
+  color = "secondary",
+  value = completed_projects
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Projects started"
+
+list(
+  icon = "cone-striped",
+  color = "#ffce67",
+  value = started_projects
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Kilometers knitted"
+
+list(
+  icon = "rulers",
+  color = "light",
+  value = meterage |> round(digits = 2)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Gifts made"
+
+list(
+  icon = "gift",
+  color = "pink",
+  value = gift_projects
+)
+```
+
+## Row {height=70%}
+### Column {width=25%}
+
+```{r}
+#| title: Most favourited project
+#| padding: 0px
+#| expandable: false
+
+most_favourited <- df_year |> mutate(favorites_count = as.numeric(favorites_count)) |> filter(favorites_count == max(favorites_count)) |> slice_sample(n = 1)
+
+
+images <- list.files(
+    path = "data/photos/project",
+    pattern = paste0(most_favourited |> select(permalink), "-\\d.jpg"),
+    full.names = TRUE
+)
+
+plot <- ggplot() + geom_image(aes(x = 1,  y= 1, image = sample(images, 1)), size = 0.7) + theme_void()
+
+table <- make_table(most_favourited)
+  
+
+plot
+table
+  
+```
+
+
+### Column {width=35%}
+```{r}
+#| title: Knitting categories
+#| padding: 4px
+#| expandable: false
+plot_categories()
+```
+
+### Column {width=40%}
+```{r}
+#| title: Knitting weights
+#| padding: 4px
+#| expandable: false
+
+plot_weights()
+
+```
+
+
+# 2023
+```{r}
+
+make_value_boxes("2023")
 
 ```
 ## Row {height="20%"}
@@ -479,6 +579,204 @@ table
 #| padding: 4px
 #| expandable: false
 
+plot_categories()
+```
+
+### Column {width=40%}
+```{r}
+#| title: Knitting weights
+#| padding: 4px
+#| expandable: false
+
+plot_weights()
+
+```
+
+
+# 2021
+```{r}
+
+make_value_boxes("2021")
+
+```
+## Row {height="20%"}
+
+```{r}
+#| content: valuebox
+#| title: "Completed Projects"
+
+list(
+  icon = "check-all",
+  color = "secondary",
+  value = completed_projects
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Projects started"
+
+list(
+  icon = "cone-striped",
+  color = "#ffce67",
+  value = started_projects
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Kilometers knitted"
+
+list(
+  icon = "rulers",
+  color = "light",
+  value = meterage |> round(digits = 2)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Gifts made"
+
+list(
+  icon = "gift",
+  color = "pink",
+  value = gift_projects
+)
+```
+
+## Row {height=70%}
+### Column {width=25%}
+
+```{r}
+#| title: Most favourited project
+#| padding: 0px
+#| expandable: false
+
+most_favourited <- df_year |> mutate(favorites_count = as.numeric(favorites_count)) |> filter(favorites_count == max(favorites_count)) |> slice_sample(n = 1)
+
+
+images <- list.files(
+    path = "data/photos/project",
+    pattern = paste0(most_favourited |> select(permalink), "-\\d.jpg"),
+    full.names = TRUE
+)
+
+plot <- ggplot() + geom_image(aes(x = 1,  y= 1, image = sample(images, 1)), size = 0.7) + theme_void()
+
+table <- make_table(most_favourited)
+  
+
+plot
+table
+  
+```
+
+
+### Column {width=35%}
+```{r}
+#| title: Knitting categories
+#| padding: 4px
+#| expandable: false
+plot_categories()
+```
+
+### Column {width=40%}
+```{r}
+#| title: Knitting weights
+#| padding: 4px
+#| expandable: false
+
+plot_weights()
+
+```
+
+
+# 2020
+```{r}
+
+make_value_boxes("2020")
+
+```
+## Row {height="20%"}
+
+```{r}
+#| content: valuebox
+#| title: "Completed Projects"
+
+list(
+  icon = "check-all",
+  color = "secondary",
+  value = completed_projects
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Projects started"
+
+list(
+  icon = "cone-striped",
+  color = "#ffce67",
+  value = started_projects
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Kilometers knitted"
+
+list(
+  icon = "rulers",
+  color = "light",
+  value = meterage |> round(digits = 2)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Gifts made"
+
+list(
+  icon = "gift",
+  color = "pink",
+  value = gift_projects
+)
+```
+
+## Row {height=70%}
+### Column {width=25%}
+
+```{r}
+#| title: Most favourited project
+#| padding: 0px
+#| expandable: false
+
+most_favourited <- df_year |> mutate(favorites_count = as.numeric(favorites_count)) |> filter(favorites_count == max(favorites_count)) |> slice_sample(n = 1)
+
+
+images <- list.files(
+    path = "data/photos/project",
+    pattern = paste0(most_favourited |> select(permalink), "-\\d.jpg"),
+    full.names = TRUE
+)
+
+plot <- ggplot() + geom_image(aes(x = 1,  y= 1, image = sample(images, 1)), size = 0.7) + theme_void()
+
+table <- make_table(most_favourited)
+  
+
+plot
+table
+  
+```
+
+
+### Column {width=35%}
+```{r}
+#| title: Knitting categories
+#| padding: 4px
+#| expandable: false
 plot_categories()
 ```
 
